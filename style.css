@@ -1,0 +1,1062 @@
+@font-face { font-family: Times New Roman; src: url('./font/times.ttf'); }
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+#wrapper {
+  width: 1024px;
+  height: 768px;
+  height: 100%;
+  width: 100%;
+  /* display: table; */
+  /* background-color: rgb(247, 213, 213); */
+  /* border: 3px solid rgb(170, 170, 170); */
+}
+
+.disable-dbl-tap-zoom {
+  touch-action: manipulation;
+}
+
+.intro {
+  width: 1024px;
+  height: 768px;
+  position: relative;
+  display: block;
+  background-image: url(./Images/muralmath.jpg);
+  background-size: cover;
+  z-index: 9998;
+}
+
+.calcu {
+  display: inline-block;
+  position: absolute;
+  top: 625px;
+  left: 76px;
+  width: 180px;
+  cursor: pointer;
+}
+
+.calculateBtn{
+  display: inline-block;
+  position: absolute;
+  top: 501px;
+  left: 69px;
+  width: 180px;
+  cursor: pointer;
+}
+
+#checkAnswer {
+  display: inline-block;
+  position: absolute;
+  top: 585px;
+  left: 76px;
+  width: 174px;
+  cursor: pointer;
+  border: 3px solid #7db1ff;
+  border-radius: 7px;
+}
+#checkAnswer:hover{
+  border: 3px solid #3499cc;
+  border-radius: 7px;
+}
+
+.intro1 {
+  position: relative;
+  display: none;
+  width: 1024px;
+  height: 768px;
+  background-image: url(./Images/muralmath.jpg);
+  background-size: cover;
+  /* z-index: 9997; */
+}
+
+.leftPara {
+    display: inline-block;
+    position: absolute;
+    width: 275px;
+    top: 110px;
+    left: 25px;
+    text-align: center;
+    font-size: 18px;
+    font-family: Arial;
+    color: #333232;
+}
+.leftPara1 {
+  display: inline;
+  position: absolute;
+  width: 315px;
+  top: 90px;
+  left: 10px;
+  text-align: center;
+  font-size: 18px;
+  font-family: Arial;
+  color: #333232;
+}
+.leftLowerPara{
+  position: absolute;
+  width: 315px;
+  top: 100px;
+  left: 10px;
+  text-align: left;
+  font-size: 18px;
+  font-family: Arial;
+  color: #333232;
+}
+
+.hintBox{
+  width: 275px;
+  height: 82px;
+  position: absolute;
+  top: 87%;
+  left: 30px;
+  text-align: center;
+  border: 2px solid black;
+  font-family: Arial;
+  font-size: 20px;
+  padding-top: 10px;
+}
+
+/* .draggingBrush {
+  cursor: none;
+} */
+
+.erase {
+  display: inline;
+  position: absolute;
+  top: 1%;
+  left: 82%;
+  width: 17%;
+  z-index: 996;
+  cursor: pointer;
+}
+.backBtn {
+  display: inline;
+  position: absolute;
+  top: 1%;
+  left: 30%;
+  width: 18%;
+  cursor: pointer;
+}
+.help {
+  display: inline;
+  position: absolute;
+  top: 691px;
+  left: 922px;
+  width: 96px;
+  z-index: 9997;
+  cursor: pointer;
+}
+
+.PaintBox {
+  display: inline;
+  position: absolute;
+  width: 435px;
+  top: 660px;
+  left: 473px;
+  text-align: center;
+  border: 4px solid black;
+  height: 97px;
+  }
+
+.PaintOMeter {
+  display: inline;
+    width: 350px;
+    height: 30px;
+    position: absolute;
+    top: 36px;
+    left: 39px;
+  /* display: inline;
+  width: 350px;
+  height: 30px;
+  position: absolute;
+  top: 35px;
+  left: 38px;
+  border: 1px solid; */
+}
+
+.paintOver{
+  position: absolute;
+  width: 350px;
+  height: 30px;
+  background: #b2e5e8;
+  /* z-index: 9999; */
+  top: 35px;
+  left: 38px;
+  border: 1px solid black;
+}
+
+
+.absoluteContainer {
+  position: absolute;
+  top: 55px;
+  left: 325px;
+  z-index: 99;
+  width: 700px !important;
+  height: 575px;
+}
+
+.relativeContainer {
+  position: relative;
+  height: 575px;
+  width: 700px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12.5px 20px;
+  box-sizing: border-box;
+}
+
+.gridContain {
+  position: relative;
+  display: block;
+  margin: 0px;
+  background-size: cover;
+  padding: 0;
+  color: transparent;
+  background: #b2adca1c;
+  border: 1px solid #00000026;
+  z-index: 999;
+}
+
+#get_paint{
+  position:absolute; 
+  display: none;
+  width: 90px;
+  top: 407px;
+  left: 145px;
+}
+
+.boxTransparent {
+  float: left;
+  padding: 0;
+  margin: 0;
+  position: initial;
+  background-image: url(./Images/BOX.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  /* border: 1px solid #605555; */
+}
+
+.boxTransparent.jazz {
+  width: 83px;
+  height: 74px;
+}
+.boxTransparent.default {
+  width: 83px;
+  height: 74px;
+}
+
+.boxTransparent.fiddle {
+  width: 92px;
+  height: 78px;
+}
+
+.boxTransparent.market {
+  width: 99px;
+  height: 90px;
+}
+
+.boxTransparent.you {
+  width: 69px;
+  height: 69px;
+}
+/* .boxTransparent.syou {
+  width: 69px;
+  height: 69px;
+}
+.boxTransparent.myou {
+  width: 69px;
+  height: 69px;
+}
+.boxTransparent.lyou {
+  width: 69px;
+  height: 69px;
+} */
+
+#videoBooth{
+  position: absolute;
+  z-index: 99;
+  margin: 0px auto;
+  overflow: hidden;
+}
+#videoBooth.small{
+  width: 138px;
+  height: 138px;
+  top: 219px;
+  left: 281px;
+}
+#videoBooth.medium{
+  width: 276px;
+  height: 276px;
+  top: 150px;
+  left: 212px;
+}
+#videoBooth.large{
+  width: 414px;
+  height: 414px;
+}
+
+#video{
+  width: 133%;
+}
+
+.dropdown1 {
+  position: absolute;
+  top: 1%;
+  left: 30%;
+}
+.dropdown2 {
+  position: absolute;
+  top: 1%;
+  left: 49%;
+}
+.checkBox {
+  position: absolute;
+  left: 0px;
+}
+
+.gridHeight {
+  width: auto;
+  height: auto;
+  padding: 0px;
+  margin: 0px;
+}
+
+.ruler {
+  position: absolute;
+  top: 620px;
+  left: 390px;
+  width: 605px;
+  z-index: 998;
+  cursor: pointer;
+}
+.rulerBtn {
+  display: inline-block;
+  position: absolute;
+  top: 14px;
+  left: 734px;
+  width: 85px;
+  font-size: x-large;
+}
+#myCheck {
+  height: 17px;
+  width: 17px;
+}
+.container {
+  display: block;
+  position: relative;
+  padding-left: 26px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 6px;
+  left: 3px;
+  height: 13px;
+  width: 14px;
+  background-color: #eee;
+  border: 1px solid gray;
+}
+.checkmark:hover {
+  border: 1px solid skyblue;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: white;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 4px;
+  top: -3px;
+  width: 4px;
+  height: 10px;
+  border: solid black;
+  border-width: 0px 2px 2.5px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+}
+
+.container :hover {
+  
+  /* border: 1px solid skyblue; */
+
+}
+input[type="checkbox" i] {
+  background-color: black;
+  cursor: default;
+  appearance: auto;
+  box-sizing: border-box;
+  margin: 3px 3px 3px 4px;
+  padding: initial;
+  border: black;
+}
+
+/* drop down */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*the container must be positioned relative:*/
+.custom-select {
+  position: relative;
+  font-family: Arial;
+  border-radius: 5px;
+  border: 2px solid #a6c5f5;
+ 
+}
+.custom-select:hover{
+  border: 2px solid #4faeec;
+
+}
+.custom-select:hover #vertical{
+  background-color:  #4faeec;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: rgb(244 236 236 / 75%);
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 9px;
+  right: 8px;
+  width: 0px;
+  height: 0px;
+  border: 5px solid transparent;
+  border-color: rgb(0, 0, 0) transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent rgb(0, 0, 0) transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,
+.select-selected {
+  color: #000000;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 10px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Times New Roman;
+  border-bottom-color: #3f3f40;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: rgb(254 254 254);
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+  border: 1px solid rgba(57, 157, 250, 0.719);
+  background-color: rgba(57, 157, 250, 0.24);
+}
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+
+/* calculator */
+.dragable-cal {
+  position: absolute;	
+  height: 26px;	
+  width: 180px;	
+  background-color: #850808;	
+  text-align: center;	
+  display: none;	
+  z-index: 9998;	
+  top: 57px;	
+  left: 339px;
+}
+
+.dragable-cal #drag {
+  color: white;	
+  font-size: 20px;	
+  font-family: arial;	
+  padding: 8px 52px;	
+  padding-top: 3px;	
+  cursor: pointer;
+}
+
+.dragable-cal img {
+  position: absolute;
+  top: 3px;	
+  right: 3px;	
+  cursor: pointer;	
+  height: 22px;
+}
+
+.cal-body {
+  height: 195px;	
+  width: 175px;	
+  position: absolute;	
+  background-color: #ccc;	
+  top: 25px;	
+  left: 2px;	
+  border: 1px solid black;	
+  box-shadow: 0px 0px 1px 2px grey;
+}
+
+.cal-display {
+  width: 145px;
+  margin: 5px auto;
+ position: relative;
+}
+
+.cal-body input {
+  width: 151px;	
+  margin-left: -8px;	
+  border-radius: 3px;	
+  border: 2px solid black;	
+  height: 20px;	
+  background-color: #eee;	
+  box-shadow: 0px 0px 1px 2px grey;	
+  direction: rtl;	
+  font-size: 20px;
+}
+
+.cal-number {
+  display: flex;	
+  display: grid;	
+  grid-template-columns: auto auto auto auto 0px;	
+  grid-gap: 6px 22px;	
+  /* padding: 3px; */	
+  padding-left: 7px;	
+  padding-right: 0px;	
+  /* background-color: #ccc;*/
+}
+
+.cal-number div {
+  height: 24px;	
+  width: 25px;	
+  border: 1px solid;	
+  text-align: center;	
+  background-color: rgba(255, 255, 255, 0.4);	
+  border-radius: 3px;	
+  box-shadow: 0px 0px 1px 2px grey;	
+  cursor: pointer;	
+  font-size: 24px;	
+  text-shadow: 2px 2px 5 0 black;	
+  font-family: arial;	
+  color: transparent;	
+  text-shadow: 0 0 1.2px #000;	
+  /* text-shadow: 2px 2px 0px slategrey; */	
+  /* background-color: lightgrey;*/
+}
+
+.cal-number div:hover {
+  background-color: #ccc;
+  border: 1px solid black;
+  transform: scale(0.9);
+}
+
+#c {
+  margin-left: 20px;
+  grid-row: 1 / 2;
+  grid-column: 3/ -1;
+}
+
+#root,
+#div,
+#minus {
+  margin-left: -50px;
+}
+
+#equal {
+  width: 55px;	
+  margin-left: -32px;	
+  border: 2px solid black;
+}
+
+#m,
+#mc {
+  width: 39px;
+}
+
+#eight,
+#five,
+#two,
+#dot {
+  margin-left: -30px;
+}
+
+#nine,
+#six,
+#three,
+#pluMin {
+  margin-left: -47px;
+}
+
+#percent,
+#mul,
+#plus {
+  margin-left: -36px;
+}
+
+#div,
+#minus {
+  margin-left: -50px;
+}
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+
+#high {
+  position: absolute;
+  top: 20px;
+  left: 42px;
+  font-size: 22px;
+}
+#high-dim {
+    font-size: 22px;
+    top: 18px;
+    position: absolute;
+    left: 142px;
+    width: 36px;
+}
+#wide {
+    position: absolute;
+    top: 20px;
+    left: 195px;
+    font-size: 22px;
+}
+#wide-dim {
+    font-size: 22px;
+    top: 18px;
+    position: absolute;
+    left: 295px;
+    width: 34px;
+}
+#paint-dim {
+  position: absolute;
+  top: 3px;
+  left: 142px;
+  font-size: 24px;
+}
+#paint-dim sup {
+  font-size: 12px;
+}
+#bucket-dim {
+  position: absolute;
+  top: 13px;
+  left: 139px;
+  font-size: 24px;
+  font-family: Arial;
+}
+#check3{
+  position: absolute;
+    top: 10px;
+}
+
+.compareImg1{
+  position: absolute;
+  top: 120px;
+  z-index: 9999;
+  width: 200px;
+  left: 575px;
+  visibility: hidden;
+  cursor: pointer;
+}
+.compareImg2{
+  position: absolute;
+  top: 120px;
+  z-index: 9999;
+  width: 160px;
+  left: 595px;
+  visibility: hidden;
+  cursor: pointer;
+}
+.compareImg3{
+  position: absolute;
+  top: 120px;
+  z-index: 9999;
+  width: 182px;
+  left: 585px;
+  visibility: hidden;
+  cursor: pointer;
+}
+
+.compareBox{
+  display: none;
+  position: relative;
+  width: 150px;
+  top: 383px;
+  left: 250px;
+  font-size: 18px;
+  font-family: Arial;
+  z-index: 9998;
+  font-weight: bold;
+}
+#overlay_abs{
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: #353131bd;
+  z-index: 9999;
+  position: absolute;
+}
+#overlay_abs1{
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: #353131bd;
+  z-index: 9999;
+  position: absolute;
+}
+#overlay{
+  background-color: #0066ff;
+  height: auto;
+  position: absolute;
+  top: 5px;
+  margin: 60px;
+  display: none;
+  z-index: 9999;
+}
+#overlay1{
+  background-color: #0066ff;
+  height: 70%;
+  position: absolute;
+  top: 27px;
+  margin: 60px;
+  display: none;
+  z-index: 9999;
+}
+
+#overlay-text{
+  text-align: center;
+  font-size: 33px;
+  margin: 12px 42px;
+  color: white;
+  font-family: 'Arial';
+}
+
+#close-overlay{
+  position: absolute;
+  top: 5px;
+  right: 9px;
+  height: 31px;
+  width: 31px;
+  cursor: pointer;
+  background-image: url(./Images/CLOSE.png);
+  background-repeat: no-repeat;
+}
+
+
+.boxNew{
+  font-size: 22px;
+  text-align: right;
+  color: black;
+  outline: none;
+  max-width: 60px;
+  top: 16px;
+  max-height: 25px;
+  left: 68px;
+  background: transparent;
+  position: absolute;
+}
+
+#text2{
+  font-size: 22px;
+  text-align: right;
+  color: black;
+  outline: none;
+  width: 60px;
+  top: 14px;
+  height: 27px;
+  left: 224px;
+  background: transparent;
+  position: absolute;
+}
+
+
+#rotate{
+  position: absolute;
+  /* background-color:rgba(0, 0, 0 , 0.5); */
+  width: 300px;
+  height: 35px;
+  top: 0px;
+  left: 300px;
+}
+#dragScale{
+  position: absolute;
+  /* background-color:rgba(255, 0, 0, 0.5); */
+  width: 300px;
+  height: 35px;
+  top: 0px;
+  left: 0px;
+}
+
+#draggable{
+  /* position: relative; */
+  width: auto;
+  height: auto;
+
+}
+
+.hidden{
+  display: none;
+}
+
+#memory-dis{
+  position: absolute;
+  top: 1px;
+  left: -5px;
+  display: none;
+  font-family: arial;
+  font-size: 12px;
+}
+
+.draggable1 {
+  position: relative;
+  border-radius: 4px;
+  max-width: 150px;
+  height: 100px;
+  top: 660px;
+  left: 400px;
+  z-index: 998;
+  cursor: pointer;
+}
+.hide1 {
+  transition: 0.01s;
+  transform: translateX(-9999px);
+}
+#vertical{
+  height: 28px;
+  width: 2px;
+  background-color: #ddd5d6;
+  position: absolute;
+  right: 26px;
+}
+p{
+  color: #f8f8ff;
+}
+
+#text3{
+  font-size: 22px;
+  text-align: right;
+  color: black;
+  outline: none;
+  width: 84px;
+  top: 3px;
+  height: 24px;
+  left: 47px;
+  background: transparent;
+  position: absolute;
+}
+
+#text4{
+  font-size: 22px;
+  text-align: right;
+  color: black;
+  outline: none;
+  width: 84px;
+  top: 13px;
+  height: 24px;
+  left: 47px;
+  background: transparent;
+  position: absolute;
+}
+#textbox{
+  font-size: 22px;
+  text-align: right;
+  color: black;
+  outline: none;
+  width: 58px;
+  top: 9px;
+  height: 28px;
+  left: 68px;
+  background: transparent;
+  position: absolute;
+}
+#textbox1{
+  font-size: 22px;
+  text-align: right;
+  color: black;
+  outline: none;
+  width: 60px;
+  top: 7px;
+  height: 30px;
+  left: 225px;
+  background: transparent;
+  position: absolute;
+}
+
+@media only screen and (min-device-width:320px) and (max-device-width:1024px) {
+ .boxNew{
+  max-width: 45px;
+  top: 14px;
+  max-height: 20px;
+  left: 68px;
+ }
+ #text2{
+  max-width: 45px;
+  top: 13px;
+  max-height: 21px;
+  left: 224px;
+ }
+ #text3{
+  width: 69px;
+  top: 1px;
+  height: 20px;
+  left: 47px;
+ }
+ #text4{
+  width: 69px;
+  top: 10px;
+  height: 20px;
+  left: 47px;
+ }
+ #textbox{
+  width: 43px;
+  top: 7px;
+  height: 22px;
+  left: 68px;
+ }
+ #textbox1{
+  width: 45px;
+  top: 5px;
+  height: 24px;
+  left: 225px;
+}
+.cal-body input {
+  width: 140px;
+}
+.cal-number div {
+  height: 22.5px;
+}
+}
+/* @media screen 
+  and (device-width: 320px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 3) {
+
+}
+@media screen 
+  and (device-width: 360px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 2) {
+
+}
+@media screen 
+  and (device-width: 360px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 3) {
+
+}
+@media screen 
+  and (device-width: 360px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 4) {
+
+}
+@media screen 
+  and (device-width: 360px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 3) {
+
+}
+
+@media screen 
+  and (device-width: 360px) 
+  and (device-height: 592px) 
+  and (-webkit-device-pixel-ratio: 4){
+
+} */
+
+
+
+
+
+
+.dragable-cal1{
+  height: auto;
+  width: auto;
+}

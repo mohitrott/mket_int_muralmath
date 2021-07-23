@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="jquery.js"></script>
+  </head>
+
+  <body class="disable-dbl-tap-zoom">
+    <div id="wrapper">
+      <div id="page-1" class="intro">
+        <div class="leftPara">
+          <span>
+            Use the paintbrush to color in the rectangular grid and reveal the
+            mural. Notice what happens to the Paint-O-Meter as you paint. </span
+          ><br />
+          <br />
+          <span>
+            Try other murals and sizes. As the length and width double or triple,
+            do the paintings stay propotional? And what happens to the areas as
+            these two dimensions increase? It might not be what you think. </span
+          ><br />
+          <br />
+          <span>
+            Click on Calculate to find out what the areas of the murals are and
+            how much paint you'll need for each mural, beginning with a small
+            image.
+          </span>
+        </div>
+        <img
+          src="./Images/Caluclate_btn.png"
+          class="calculateBtn"
+          onclick="changePage(2)"
+          onmouseover="this.src='./Images/Caluclate_H_btn.png'"
+          onmouseout="this.src='./Images/Caluclate_btn.png'"
+          tabindex="1"
+        />
+        <div class="dropdown1">
+          <div class="custom-select" style="width: 180px">
+            <span id="vertical"></span>
+            <select id="myDropDown">
+              <option value="0">Select Size</option>
+              <option value="1">Small</option>
+              <option value="2">Medium</option>
+              <option value="3">Large</option>
+            </select>
+          </div>
+        </div>
+        <div class="dropdown2">
+          <div class="custom-select" style="width: 180px">
+            <span id="vertical"></span>
+            <select>
+              <option value="0">Select image</option>
+              <option value="1">Jazz</option>
+              <option value="2">Market</option>
+              <option value="3">Fiddle</option>
+              <!-- <option value="3">You</option> -->
+            </select>
+          </div>
+        </div>
+
+        <div class="hintBox">
+          <span>
+            Watch here for hints and instructions.
+          </span>
+        </div>
+        <div class="PaintBox">
+          <h1 style="margin-top: 0px; font-family: Arial;">Paint-O-Meter</h1>
+          <span
+            style="position: absolute;
+            top: 35px;
+            left: 15px;
+            font-size: 30px;
+            font-family: Arial;"
+            >0</span
+          >
+          <div class = "paintOver" >
+
+          </div>
+          <img src="./Images/Color.png" id= "bob" class="PaintOMeter" />
+          <span
+            style="position: absolute;
+            top: 34px;
+            left: 395px;
+            font-size: 30px;
+            font-family: Arial;"
+            >50</span
+          >
+          <span
+            style="position: absolute; font-size: 29px; top: 66px; left: 115px; font-family: Arial;"
+            >Buckets of Paint</span
+          >
+        </div>
+        <div id = "overlay_abs">
+        <div id="overlay">
+          <div id="overlay-text">
+            <span id="close-overlay" onclick="overlayClose()"></span>
+            <p>Explore the different sizes and murals as much as you like. When you go to Calculate, you'll start with one 
+              of the small murals and work your way through the larger sizes.
+            </p>
+            <!-- <p>If you have a web cam, choose "You" to use your own image or someone else's to create a real-time, full-motion
+              mural! 
+            </p> -->
+          </div>
+        </div>
+      </div>
+        <img src="./Images/Brush.png" alt="" class="draggable1" draggable ondragstart="startDrag(event)" ondragend="endDrag(event)" ontouchstart="startDrag(event)" ontouchend="endDrag(event)">
+        <img
+          src="./Images/Erase_btn.png"
+          class="erase"
+          onclick="resetErase()"
+          onmouseover="this.src='./Images/Erase_H_btn.png'"
+          onmouseout="this.src='./Images/Erase_btn.png'"
+          tabindex="1"  
+        />
+        <img src="./Images/Help_btn.png" class="help" onclick="clickIns()" id= "ins" tabindex="3" 
+        onmouseover="this.src='./Images/Help_H_btn.png'"
+          onmouseout="this.src='./Images/Help_btn.png'"/>
+        <div class="absoluteContainer">
+          <div class="relativeContainer">
+            <div class="gridContain" id="gridContainor"></div>
+            <div class="booth" id= "videoBooth">
+              <video id="video"  autoplay></video>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="page-2" class="intro1">
+        <div class="absoluteContainer">
+          <div class="relativeContainer">
+            <div class="gridContain" id="gridContainor1"></div>
+          
+          </div>
+        </div>
+        <div id= "dropp2" class="dropdown2 hidden">
+          <div class="custom-select" style="width: 180px">
+            <select>
+              <option value="0">Select Image</option>
+              <option value="1">Jazz</option>
+              <option value="2">Market</option>
+              <option value="3">Fiddle</option>
+              <!-- <option value="3">You</option> -->
+            </select>
+          </div>
+        </div>
+        <!-- <div class="compareBox">
+        <input type="checkbox" id="checkCompare" onChange="toggleVisibility();"  /> Compare
+      </div> -->
+      <div class = "compareBox">
+        <label class="container">
+          <input class="coupon_question1" unchecked="unchecked" type="checkbox" id="checkCompare" onChange="toggleVisibility();"/> <b>Compare</b>
+          <span class="checkmark"></span>
+        </label>
+      </div>
+        <img class= "compareImg1" id= "compareM" src="./Images/market.png" alt="">
+        <img class= "compareImg2" id= "compareJ" src="./Images/jazz.png" alt="">
+        <img class= "compareImg3" id= "compareF" src="./Images/fiddle.png" alt="">
+      
+        <div id = "overlay_abs1">
+          <div id="overlay1">
+            <div id="overlay-text">
+              <span id="close-overlay" onclick="overlayClose1()"></span>
+              <p>Start by using a paintbrush to color in the small painting. Then measure its dimensions, calculate its 
+                area, and observe how many buckets of paint you used.
+              </p>
+              <p>When you are ready, click "Check Answers" to reveal if all your answers are correct. If your estimations
+                are close to the exact answer, they will be marked correct with a green check and they will be changed to an
+                exact number.
+              </p>
+              <p>If they are all correct, a "Next" button will appear and you'll move on to a medium-sized version
+                of painting.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id= "newLeft">
+        <div class="leftPara1">
+          <span id="heading">
+            What happens to the amount of paint needed as the painting&#39;s
+            dimensions increase proportionately? Start small to find out. </span
+          ><br />
+          <div class="leftLowerPara">
+          <span id="para1">
+            1. Use the paintbrush to color in the grid and reveal the painting. </span
+          ><br />
+          <div class="checkBox" id="new_div" style="display: none">
+            <img id="check" src="./Images/Check_B.png" class="" style="position: relative;
+            top: 10px;"
+             />
+            <div>
+              <input
+                value=""
+                maxlength="5"
+                id="textbox"
+                type="text"
+                autocomplete="off"
+              />
+            </div>
+            <div>
+              <input
+                value=""
+                maxlength="5"
+                id="textbox1"
+                type="text"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+
+          <div
+            id="border1"
+            style="border-top: dotted; left: 0px; width: 100%; margin-top: 10px "
+          >
+            <span id="para2" style="    position: relative; top: 10px;">
+              2. Use the ruler to measure the mural's dimensions (height x
+              width). (Hint: Is this a square grid?)
+            </span>
+            <br />
+          </div>
+          <div class="checkBox">
+            <img id="check1" src="./Images/Check_B.png" class="" style="    position: relative; top: 15px;" />
+            <span
+              id="high"
+              >H:</span
+            >
+            <div>
+              <input
+                value
+                class = "boxNew"
+                maxlength="5"
+                id="text1"
+                type="text"
+                autocomplete="off"
+              /><span id="high-dim">m x</span>
+            </div>
+            <div>
+              <span id="wide">W:</span>
+              <input
+                value
+                class = "boxNew1"
+                maxlength="5"
+                id="text2"
+                type="text"
+                autocomplete="off"
+              /><span id="wide-dim">m</span>
+            </div>
+          </div>
+
+          <div
+            style="border-top: dotted;
+            left: 0px;
+            width: 100%;
+            margin-top: 62px;
+            margin-bottom: 15px;"
+          >
+            <span id="para3" style="position: relative; top: 10px;"> 3. What is the area of the painting? </span>
+            <br/>
+          </div>
+          <div class="checkBox">
+            <img id="check2" src="./Images/Check_B.png" class="" />
+            <div>
+              <input
+                value
+                maxlength="5"
+                id="text3"
+                type="text"
+                autocomplete="off"
+              /><span id="paint-dim">m<sup>2</sup></span>
+            </div>
+          </div>
+
+          <div
+            style="border-top: dotted;
+            left: 0px;
+            width: 100%;
+            margin-top: 60px;
+        "
+          >
+            <span id="para4" style="position: relative; top: 10px;
+        ">
+              4. Look at the Paint-o-Meter. How much paint did you use?
+            </span>
+            <br />
+          </div>
+          <img id="get_paint" onclick="getPaint()" src="./Images/Gpaint_btn.png" tabindex="5" />
+          <div class="checkBox">
+            <img id="check3" src="./Images/Check_B.png" class="" />
+            <div>
+              <input
+                value
+                maxlength="5"
+                id="text4"
+                type="text"
+                autocomplete="off"
+              /><span id="bucket-dim">buckets</span>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+        <img
+          id="checkAnswer"
+          src="./Images/Check_Btn.png"
+          class="check"
+          onclick="check_answer()"
+           tabindex="1"/>
+        
+        <img src="./Images/Cal_Btn.png" class="calcu" onclick="openCal()"
+            onmouseover="this.src='./Images/Cal_H_Btn.png'"
+            onmouseout="this.src='./Images/Cal_Btn.png'"
+            tabindex="2"
+         />
+        <div class="dragable-cal">
+          <span id="drag">Drag </span>
+          <img
+            src="./Images/Drag_X.png"
+            alt=""
+            srcset=""
+            onclick="closeCal()"
+            
+          />
+          <div class="cal-body">
+            <div class="cal-display">
+              <input type="text" maxlength="12" id="result-display" maxlength="2" disabled />
+              <span id="memory-dis">M</span>
+              <!-- <input type="text" id="mtext" maxlength="1" disabled /> -->
+            </div>
+            <div class="cal-number">
+              <div id="m" onclick="calculatorValue(event)">M</div>
+              <div id="mc" onclick="calculatorValue(event)" style="margin-left: -13px;">MC</div>
+              <div id="c" onclick="calculatorValue(event)">C</div>
+              <div id="seven" value="7" onclick="calculatorValue(event)">7</div>
+              <div id="eight" value="8" onclick="calculatorValue(event)">8</div>
+              <div id="nine" value="9" onclick="calculatorValue(event)">9</div>
+              <div id="percent" value="%" onclick="calculatorValue(event)">
+                %
+              </div>
+              <div id="root" value="root" onclick="calculatorValue(event)">
+                &#8730;
+              </div>
+              <div id="four" value="4" onclick="calculatorValue(event)">4</div>
+              <div id="five" value="5" onclick="calculatorValue(event)">5</div>
+              <div id="six" value="6" onclick="calculatorValue(event)">6</div>
+              <div id="mul" value="x" onclick="calculatorValue(event)">x</div>
+              <div id="div" value="/" onclick="calculatorValue(event)">&#247;</div>
+              <div id="one" value="1" onclick="calculatorValue(event)">1</div>
+              <div id="two" value="2" onclick="calculatorValue(event)">2</div>
+              <div id="three" value="3" onclick="calculatorValue(event)">3</div>
+              <div id="plus" value="+" onclick="calculatorValue(event)">+</div>
+              <div id="minus" value="-" onclick="calculatorValue(event)">-</div>
+              <div id="zero" value="0" onclick="calculatorValue(event)">0</div>
+              <div id="dot" value="." onclick="calculatorValue(event)">.</div>
+              <div id="pluMin" value="7" onclick="calculatorValue(event)">
+                &#177;
+              </div>
+              <div id="equal" value="=" onclick="calculatorValue(event)">=</div>
+            </div>
+          </div>
+        </div>
+        <div class="hintBox" id = "hint">
+          <span>
+            Watch here for hints and instructions.
+          </span>
+        </div>
+        
+        <div class="PaintBox">
+          <h1 style="margin-top: 0px; font-family: Arial;">Paint-O-Meter</h1>
+          <span id= "bucketValue"
+            style="position: absolute;
+            top: 35px;
+            left: 15px;
+            font-size: 30px;
+            font-family: Arial;"
+            >0</span
+          >
+          <div class = "paintOver" >
+
+          </div>
+          <img src="./Images/Color.png" id= "paintColor" class="PaintOMeter" />
+          
+          <span
+            style="position: absolute;
+            top: 34px;
+            left: 395px;
+            font-size: 30px;
+            font-family: Arial;"
+            >50</span
+          >
+          <span id= "bucketValueDetailed"
+            style="position: relative;
+            font-size: 28px;
+            top: 9px;
+            left: 0px;
+            font-family: Arial;
+            text-align: center;"
+            >50 buckets left out of 50</span
+          >
+        </div>
+        <img
+          src="./Images/Back to explore_btn.png"
+          class="backBtn"
+          onclick="changePage(1)"
+          onmouseover="this.src='./Images/Back to explore_H_btn.png'"
+            onmouseout="this.src='./Images/Back to explore_btn.png'"
+            tabindex="3"
+        />
+        <img src="./Images/Brush.png" alt="" class="draggable1" draggable="true" ondragstart="startDrag(event)" ondragend="endDrag(event)" ontouchstart="startDrag(event)" ontouchend="endDrag(event)">
+        <div class="" id = "container">
+          <div 
+          class="ruler" id= "draggable">
+            <img
+            src="./Images/Scale.png"
+            id="ball"
+            width="600"
+          />
+          <div id="rotate"></div>
+          <div id="dragScale" ></div>
+        </div>
+        </div>
+        <img
+          src="./Images/Erase_btn.png"
+          class="erase"
+          onclick="resetErase()"
+          onmouseover="this.src='./Images/Erase_H_btn.png'"
+            onmouseout="this.src='./Images/Erase_btn.png'"
+            tabindex="4"
+        />
+        <div class="rulerBtn">
+         
+          <label class="container">
+            <input class="coupon_question" checked="checked" type="checkbox" id="myCheck" /> <b style="font-family: Arial;">Ruler</b>
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <img src="./Images/Help_btn.png" class="help" onclick="clickIns1()" tabindex="5"  onmouseover="this.src='./Images/Help_H_btn.png'"
+        onmouseout="this.src='./Images/Help_btn.png'"
+        />
+      </div>
+    </div>
+
+    <script type="text/javascript" src="scaling.js"></script>
+    <script type="text/javascript" src="accessibility.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="DragDropTouch.js"></script>
+  </body>
+</html>
