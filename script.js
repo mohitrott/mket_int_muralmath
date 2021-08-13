@@ -166,7 +166,7 @@ function pageLayout(x) {
     $('.draggable1').css({ top: "660px" });
      document.getElementById("checkAnswer").src = "./Images/Check_Btn.png";
     console.log(canvasType);
-    // el=50
+    el=50
     grid2(null,"small","fiddle");
     if(showdrop){
       document.getElementById("dropp2").classList.remove("hidden");
@@ -1979,7 +1979,7 @@ var angle = 0;
       stop(event);
     });
   };
-
+var startedOnce = false;
   start = function(e) {
     roo = true;
     var clientX = e.clientX || e.touches[0].clientX;
@@ -1996,7 +1996,12 @@ var angle = 0;
     };
     x = clientX - center.x;
     y = clientY - center.y;
-    startAngle = R2D * Math.atan2(y, x);
+    if(!startedOnce){
+      startAngle = R2D * Math.atan2(y, x);
+      startedOnce = true;
+    }
+    
+    console.log('start angle after start ', startAngle);
     return active = true;
   };
 
@@ -2009,14 +2014,19 @@ var angle = 0;
     var x = clientX - center.x,
       y = clientY - center.y,
       d = R2D * Math.atan2(y, x);
-    rotation = d - startAngle;
+    rotation = d - Math.abs(startAngle);
      rulerElement.style.transformOrigin = "center left";
-    return rulerElement.style.webkitTransform = "rotate(" + (angle + rotation) + "deg)";
+    //  var addAngleValue = -1 * angle
+     console.log(angle,rotation)
+    return rulerElement.style.webkitTransform = "rotate(" + ((angle) + (rotation)) + "deg)";
+    
   };
 
   stop = function() {
     roo = false;
     angle += rotation;
+    startAngle = angle;
+    console.log('value of angle after stop', angle);
     return active = false;
   };
 
