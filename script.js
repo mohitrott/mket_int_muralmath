@@ -1960,27 +1960,28 @@ var angle = 0;
     rot.addEventListener("touchstart", start, false);
     $(document).bind('mousemove', function(event) {
       if (active === true) {
-        // event.preventDefault();
+        event.preventDefault();
         rotate(event);
       }
     });
     $(document).bind('touchmove', function(event) {
       if (active === true) {
-        // event.preventDefault();
+        event.preventDefault();
         rotate(event);
       }
     });
     $(document).bind('mouseup', function(event) {
-      // event.preventDefault();
+      event.preventDefault();
       stop(event);
     });
     $(document).bind('touchmove', function(event) {
-      // event.preventDefault();
+      event.preventDefault();
       stop(event);
     });
   };
-var startedOnce = false;
+  // var startedOnce = false;
   start = function(e) {
+    e.preventDefault();
     roo = true;
     var clientX = e.clientX || e.touches[0].clientX;
     var clientY = e.clientY || e.touches[0].clientY;
@@ -1992,14 +1993,14 @@ var startedOnce = false;
       x, y;
     center = {
       x: l,
-      y: t + 17.5
+      y: t + h
     };
     x = clientX - center.x;
     y = clientY - center.y;
-    if(!startedOnce){
+    // if(!startedOnce){
       startAngle = R2D * Math.atan2(y, x);
-      startedOnce = true;
-    }
+    //   startedOnce = true;
+    // }
     
     console.log('start angle after start ', startAngle);
     return active = true;
@@ -2014,7 +2015,7 @@ var startedOnce = false;
     var x = clientX - center.x,
       y = clientY - center.y,
       d = R2D * Math.atan2(y, x);
-    rotation = d - Math.abs(startAngle);
+    rotation = d - startAngle;
      rulerElement.style.transformOrigin = "center left";
     //  var addAngleValue = -1 * angle
      console.log(angle,rotation)
@@ -2025,7 +2026,6 @@ var startedOnce = false;
   stop = function() {
     roo = false;
     angle += rotation;
-    startAngle = angle;
     console.log('value of angle after stop', angle);
     return active = false;
   };
@@ -2057,7 +2057,7 @@ function dragElement1(ell) {
 
   function dragMouseDown1(em) {
   if(roo == false){
-
+    
     $('#wrapper').css('cursor', 'pointer');
     em = em || window.event;
     if(!em.touches){
